@@ -1,0 +1,12 @@
+(library
+ (name chupikapi)
+ (libraries llvm llvm.analysis llvm.scalar_opts)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))
+
+(ocamllex
+ (modules pikascan))
+
+(menhir
+ (modules pikaparse)
+ (flags --explain --dump --strict))

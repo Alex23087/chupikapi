@@ -1,0 +1,26 @@
+Program := Intro Function* Outro
+
+Function := FunIdent (UNBANG VarIdent)* BANG? Block
+
+Block := PIKA(n) UndelimitedBlock CHU(n)
+
+UndelimitedBlock := (Statement)*
+
+Statement :=
+	| Block
+	| Expr
+	| PI Expr UndelimitedBlock KA UndelimitedBlock CHU
+	| PIKAPIKAPIKA Expr UndelimitedBlock CHU
+
+Expr :=
+	| LExpr
+	| RExpr
+
+LExpr := VarIdent | FunIdent
+
+RExpr :=
+	| Expr BANG LExpr
+	| LExpr UNBANG Expr
+	| Expr PI Expr
+	| Expr KA Expr
+	| Expr PIKACH Expr
