@@ -13,3 +13,11 @@
  (modules semant_pikatest)
  (preprocess
   (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))
+
+(executable
+ (name gen1_pikatest)
+ (public_name gen1_pikatest)
+ (libraries chupikapi)
+ (modules gen1_pikatest)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))

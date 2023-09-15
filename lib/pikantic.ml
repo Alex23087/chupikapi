@@ -47,7 +47,7 @@ let rec analyze_expr sym_table expr : pikatype =
           | Some v -> (
               match v with
               | Pikafunc (params, return) ->
-                (* Printf.printf "Calling %s\n" id; *)
+                  (* Printf.printf "Calling %s\n" id; *)
                   let paramn = ref params in
                   let rec analyze_funcall expr =
                     (* Printf.printf "Parameter %d: %s\n" (params - !paramn) (show_expr expr); *)

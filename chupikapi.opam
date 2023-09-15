@@ -12,6 +12,9 @@ bug-reports: "https://github.com/Alex23087/chupikapi/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.10"}
+  "menhir"
+  "ppx_deriving"
+  "llvm"
   "odoc" {with-doc}
 ]
 build: [

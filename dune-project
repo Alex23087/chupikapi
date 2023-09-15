@@ -21,7 +21,7 @@
 	(name chupikapi)
 	(synopsis "ChuPikaPi (CPP) programming language")
 	(description "A programming language that electric mice can understand")
-	(depends ocaml dune)
+	(depends ocaml dune menhir ppx_deriving llvm)
 	(tags
 		(topics "to describe" your project)))
 
