@@ -5,8 +5,8 @@
 %{
 	open Pikast
 	open Pikaloc
+	open Utils
 	(* Auxiliary definitions *)
-	let (@>) node loc = {node = node; loc = to_code_position loc}
 %}
 
 /* Tokens declarations */
@@ -53,7 +53,7 @@ pikaprogram:
 	}
 
 pikafunction:
-	| FUNIDENT list(preceded(UNBANG, VARIDENT)) BANG? block {
+	| FUNIDENT list(preceded(UNBANG, VARIDENT)) BANG? statement {
 		Fun($1, $2, $3 |> Option.is_some, $4) @> $loc
 	}
 

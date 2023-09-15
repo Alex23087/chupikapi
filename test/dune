@@ -1,7 +1,15 @@
 (executable
- (name pikatest)
- (public_name pikatest)
+ (name parse_pikatest)
+ (public_name parse_pikatest)
  (libraries chupikapi)
- (modules pikatest)
+ (modules parse_pikatest)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))
+
+(executable
+ (name semant_pikatest)
+ (public_name semant_pikatest)
+ (libraries chupikapi)
+ (modules semant_pikatest)
  (preprocess
   (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))

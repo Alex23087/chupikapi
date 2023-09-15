@@ -4,13 +4,14 @@ type 'a annotated_node = { node : 'a; loc : Pikaloc.code_pos [@opaque] }
 type identifier = string [@@deriving show]
 
 type pikaprogram = Program of func list [@@deriving show]
-
 and func = func_node annotated_node
+
 and func_node = Fun of identifier * identifier list * bool * stmt
 [@@deriving show]
 
 and stmt = stmt_node annotated_node
-and stmt_node = 
+
+and stmt_node =
   | Block of stmt list
   | Expr of expr
   | If of expr * stmt * stmt
@@ -18,6 +19,7 @@ and stmt_node =
 [@@deriving show]
 
 and expr = expr_node annotated_node
+
 and expr_node =
   | VarIdent of identifier
   | FunIdent of identifier
@@ -25,8 +27,4 @@ and expr_node =
   | Binop of expr * binop * expr
 [@@deriving show]
 
-and binop =
-  | Plus
-  | Minus
-  | Lt
-[@@deriving show]
+and binop = Plus | Minus | Lt [@@deriving show]
