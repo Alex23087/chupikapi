@@ -37,9 +37,6 @@ let handle_semantic_error source code_pos msg =
       (code_pos.Pikaloc.start_line + 5)
       text msg
 
-let handle_linker_error msg =
-  Printf.eprintf "\n*** Error during linking: %s\n\n" msg
-
 let load_file filename =
   let ic = open_in filename in
   let n = in_channel_length ic in

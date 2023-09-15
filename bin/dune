@@ -1,4 +1,4 @@
 (executable
  (public_name chupikapi)
  (name pikac)
- (libraries chupikapi))
+ (libraries chupikapi llvm llvm.bitwriter))

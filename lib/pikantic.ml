@@ -13,15 +13,13 @@ let declare_func sym_table funct =
         |> raise;
       (sym_table |> add_entry) (name, Pikafunc (params |> List.length, return))
 
-let add_variable sym_table loc id =
-  if (sym_table |> local_lookup) id |> Option.is_some then
-    Semantic_error (loc, Printf.sprintf "Variable \"%s\" declared twice" id)
-    |> raise;
+let add_variable sym_table id =
+  if (sym_table |> local_lookup) id |> Option.is_some |> not then
   (sym_table |> add_entry) (id, Pikaval)
 
 let declare_variable sym_table var =
   match ~@!var with
-  | VarIdent id -> add_variable sym_table ~@@var id
+  | VarIdent id -> add_variable sym_table id
   | _ -> failwith "Impossible"
 
 let rec analyze_expr sym_table expr : pikatype =
@@ -109,7 +107,7 @@ let analyze_function sym_table funct =
   match ~@!funct with
   | Fun (_, params, _, body) ->
       sym_table |> begin_block;
-      params |> List.iter ((sym_table |> add_variable) ~@@funct);
+      params |> List.iter (sym_table |> add_variable);
       analyze_statement sym_table body;
       sym_table |> end_block
 

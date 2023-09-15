@@ -4,7 +4,6 @@
 
 %{
 	open Pikast
-	open Pikaloc
 	open Utils
 	(* Auxiliary definitions *)
 %}
@@ -28,9 +27,9 @@
 
 
 //%right PIKA CHU
+%left BANG UNBANG
 %left PIKACH
 %left PI KA
-%left BANG UNBANG
 
 
 /* Starting symbol */

@@ -5,8 +5,11 @@ PIKA...
     pi
     pikapi
     pikapika
+    pi? PIKACHU
+    pikapi? pi PIKACH pikapika
     Pikapikachu? pi? pikapi? pikapika
-    pikapika! pikapi! pi! Pikapikachu
+    pikapika! pikapi! pi! Pikapikachu! PIKA
+    pi
 ...CHU
 
 Pikapikachu? pi? pika? pikapi!

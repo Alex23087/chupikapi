@@ -9,12 +9,12 @@ build: ## Build the project, including non installable libraries and executables
 	opam exec -- dune build --root .
 
 .PHONY: exec
-start: build ## Run the produced executable
+exec: build ## Run the produced executable
 	opam exec -- dune exec --root . bin/$(EXE).exe $(ARGS)
 	 
 .PHONY: clean-comp
 clean-comp: ## Clean microc compilation byproducts
-	rm a.bc output.bc output.o rt-support.bc
+	rm a.bc output.bc output.o runtime.bc
 
 .PHONY: clean
 clean: ## Clean build artifacts and other generated files
@@ -31,3 +31,16 @@ test: build ## Build and run test
 .PHONY: fmt
 fmt: ## Format the codebase with ocamlformat
 	opam exec -- dune build --root . --auto-promote @fmt
+
+.PHONY: compile
+compile: exec ## Compile executable and link runtime libraries
+	/usr/lib/llvm14/bin/clang -emit-llvm -c "bin/runtime.c"
+	llvm-link runtime.bc a.bc -o output.bc
+	llc -filetype=obj output.bc
+	/usr/lib/llvm14/bin/clang output.o -o a.out
+	make clean-comp
+
+.PHONY: run
+run: compile ## Compile, link and run program
+	./a.out
+	rm a.out

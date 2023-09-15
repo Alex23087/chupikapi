@@ -1,3 +1,5 @@
+open Llvm
+
 let ( >> ) f g x = g (f x)
 
 let ( >. ) f g =
@@ -9,3 +11,4 @@ let ( ~@@ ) { Pikast.loc; _ } = loc
 let ( ~@! ) { Pikast.node; _ } = node
 let dummy_pos = (Lexing.dummy_pos, Lexing.dummy_pos)
 let dummy_code_pos = Pikaloc.to_code_position dummy_pos
+let has_terminator = insertion_block >> block_terminator >> Option.is_some
