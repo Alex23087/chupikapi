@@ -21,7 +21,7 @@ rule tokenize = parse
 | ("Go, Pikachu!" | "Pikachu, I choose you!") {
 	INTRO
 }
-| "Well done, Pikachu!" {
+| ("Well done, Pikachu!" | "Pikachu, return!") {
 	OUTRO
 }
 | "PIK" ('A'+ as a) "..." {
