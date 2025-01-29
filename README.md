@@ -1,4 +1,8 @@
-# ChuPikaPi (Cpp) - Pikachu training manual
+# ChuPikaPi (Cpp) - A trainer's manual to understanding Pikachu
+
+Welcome trainer, are you looking to learn how you can train your Pikachu to execute your programs? Look no further, this guide will teach you all you need to know to communicate with your Pikachu and make it execute any program you want.
+
+This manual will teach you the basics of the Pikachu language, ChuPikaPi, and how you can use it to talk to your Pikachu.
 
 ### Concepts:
 In Cpp, the program is executed by your Pikachu. Obviously, since you are not a Pikachu yourself (probably), you first need to send your Pikachu out of the PokéBall. This is done by saying "Go, Pikachu!" or "Pikachu, I choose you!". Then, after the program is done, you need to return your Pikachu to the PokéBall by saying "Well done, Pikachu!" or "Pikachu, return!".
@@ -78,26 +82,26 @@ PIKAPIKAPIKA... <PikaExpression> <PikaStatements> ...CHU
 ```
 The first `PIKAPIKAPIKA...` tells Pikachu that you want to start a loop. Pikachu will check the value of the PikaExpression, and if it results into 0, Pikachu will stop the loop. Otherwise, the PikaStatements will be executed, and then the PikaExpression will be evaluated again. This will continue until the PikaExpression results into 0.
 
-### Functions:
-The last concept you need to train your Pikachu is functions. You can tell Pikachu to remember a sequence of commands and then call it later.
+### Moves:
+The last concept you need to train your Pikachu is moves. You can tell Pikachu to remember a sequence of commands and then call it later.
 
-PikaFunction names are just like PikaVariable names, except they start with a capital letter:
+Move names are just like PikaVariable names, except they start with a capital letter:
 ```regex
 Pi(ka(pika)*(pi|ch(u)+)?)?
 ```
 
-To teach Pikachu a PikaFunction, you first tell its name, then if you want the function to take any arguments, you tell your Pikachu their names. To do so, think of the PikaFunction as something that your variables are going to flow into. This means that you will say:
+To teach Pikachu a new move, you first tell its name, then if you want the move to take any arguments, you tell your Pikachu their names. To do so, think of the move as something that your variables are going to flow into. This means that you will say:
 ```
 Pi? pika? pi
 ```
-to say that you want a function named `Pi` with two arguments, `pika` and `pi`.
+to say that you want a move named `Pi` with two arguments, `pika` and `pi`.
 
-Functions can either return a value or not. To say that you want a value to be returned, think that the data will flow out of the function, so you will say:
+Moves can either return a value or not. To say that you want a value to be returned, think that the data will flow out of the move, so you will say:
 ```
 Pi? pika? pi!
 ```
 
-To tell Pikachu what the function does, you will then say the command that needs to be executed. You can only use one command per PikaFunction, so if you want to give Pikachu a sequence of instructions, you will need to use a PikaBlock.
+To tell Pikachu what the move does, you will then say the command that needs to be executed. You can only use one command per move, so if you want to give Pikachu a sequence of instructions, you will need to use a PikaBlock.
 
 PikaBlocks are defined with the following grammar:
 ```
@@ -105,7 +109,7 @@ PIKA... <PikaStatements> ...CHU
 ```
 Where in the first `PIKA...` you can have as many number of `A` as you want, and in the last `...CHU` you can have as many number of `U` as you want. This has no meaning for Pikachu, but it can be helpful if you are not bilingual yet, to make sense of the sentences.
 
-To return a value then you simply put it as the last statement of the function.
+To return a value then you simply put it as the last statement of the move.
 
 #### Example:
 Say that you want to teach Pikachu a new move that adds 1 to a variable and returns it. You can do this by saying:
@@ -123,13 +127,35 @@ Pi? pika! PIKA... pika? pika PI PIKACHU pika ...CHU
 ```
 
 #### Using Moves
-Once you taught Pikachu a move, you can then use it.
+Once you taught Pikachu a move, you can then use it in the program.
+To do so, the input values should flow in, and the output will flow out.
+For example, to use the move we just taught Pikachu, you can say:
+```
+PIKACHU! Pi! PIKACHU
+```
+This will set the value of `PIKACHU` to 2. Think of this as `(PIKACHU -> Pi) -> PIKACHU`.
 
+If you have multiple parameters you chain them together and they will flow in order:
+```
+pi! pika! Pika! pikachuuu
+```
+This tells Pikachu to use a move `Pika` with 2 parameters, `pi` and `pika`, and set the variable `pikachuuu` to the result.
 
-The main function is `Pikachu`
-`PIKA` is a special function to output
+The main move is `Pikachu`, you should always teach this move to your Pikachu, and that's where the program will start executing.
 
+Lastly, Pikachu already knows a move without you teaching it: `PIKA`. This is a special move that will make Pikachu say the value of the variable that flows into it. For example, if you say:
+```
+PIKA? PIKACHU
+```
+your Pikachu will say `1`.
 
+## Conclusion
+You should be now ready to train your Pikachu to execute any program you want. Have fun together and remember to not overwork your Pikachu, they need rest too!
+
+## Future editions
+In the future, we plan to write other guides, such as:
+- All about CHARmander - A guide on stringing PokeWords together
+- Train your Porygon! - Use Tri Attack to draw 3D shapes on your screen
 
 ## Technical details
 Made with Ocaml, Menhir, Ocamllex, LLVM, and built with Dune.
